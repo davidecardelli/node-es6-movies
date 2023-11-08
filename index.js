@@ -45,6 +45,45 @@ const movieAndTvSeriesInstances = filmsAndSeries.map(item => {
     }
 });
 
-// ! Output
+// ! Creiamo una funzione che restituisca la media dei voti di tutti i film per un determinato genere. Prevedere un argomento per la lista dei film ed uno per il genere.
+function mediaVotiPerGenere(films, genere) {
+    const filmsConGenereSpecifico = films.filter(item => item.genre === genere);
+    if (filmsConGenereSpecifico.length === 0) {
+        return 0;
+    }
+    const sommaVoti = filmsConGenereSpecifico.reduce((acc, film) => acc + film.rating, 0);
+    return sommaVoti / filmsConGenereSpecifico.length;
+}
+
+// ! Creiamo una funzione che restituisca la lista di tutti i generi dei film, senza che questi si ripetano.
+function listaGeneriUnici(films) {
+    const generiUnici = new Set();
+    films.forEach(item => generiUnici.add(item.genre));
+    return Array.from(generiUnici);
+}
+
+// ! Creiamo una funzione che filtri i film in base ad un genere passato come argomento e ne ritorni un array con all’interno il risultato della funzione toString() di ogni film.
+function filtraFilmPerGenere(films, genere) {
+    return films
+        .filter(item => item.genre === genere)
+        .map(item => item.toString());
+}
+
+// ! Output vari
 console.log("Elenco di film e serie TV:");
 console.log(movieAndTvSeriesInstances);
+
+
+// Puoi scegliere tra: Fantasy, Drama, Gangster
+const genereSpecifico = "Fantasy";
+console.log(`Media dei voti per il genere "${genereSpecifico}": ${mediaVotiPerGenere(movieAndTvSeriesInstances, genereSpecifico)}`);
+
+
+console.log("Lista di tutti i generi senza ripetizioni:");
+console.log(listaGeneriUnici(movieAndTvSeriesInstances));
+
+
+// Puoi scegliere tra: Fantasy, Drama, Gangster
+const genereDaFiltrare = "Drama";
+console.log(`Film nel genere "${genereDaFiltrare}":`);
+console.log(filtraFilmPerGenere(movieAndTvSeriesInstances, genereDaFiltrare));
