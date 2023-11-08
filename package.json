@@ -1,0 +1,14 @@
+{
+  "name": "es6-movies",
+  "version": "1.0.0",
+  "description": "Classi in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Davide Cardelli",
+  "license": "ISC"
+}
